@@ -7,7 +7,8 @@ class Negociacoes {
 		this._negociacoes.push(negociacao);
 	}
 
+	//programação defensiva: retornando um novo array com base no array de negociacoes
 	paraArray() {
-		return this._negociacoes;
+		return [].concat(this._negociacoes);
 	}
 }
