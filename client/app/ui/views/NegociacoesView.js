@@ -1,14 +1,14 @@
 class NegociacoesView {
-	constructor(seletor) {
-		this._elemento = document.querySelector(seletor);
-	}
+  constructor(seletor) {
+    this._elemento = document.querySelector(seletor);
+  }
 
-	update(model) {
-		this._elemento.innerHTML = this.template(model);
-	}
+  update(model) {
+    this._elemento.innerHTML = this.template(model);
+  }
 
-	template(model) {
-		return `
+  template(model) {
+    return `
 			<table class="table table-hover table-bordered">
 				<thead>
 						<tr>
@@ -22,21 +22,25 @@ class NegociacoesView {
 				<tbody>
 				</tbody>
 				 ${model
-						.paraArray()
-						.map(
-							(negocicao) =>
-								`<tr>
+           .paraArray()
+           .map(
+             (negocicao) =>
+               `<tr>
 					 		<td>${DateConverter.paraTexto(negocicao.data)}</td>
 					 		<td>${negocicao.quantidade}</td>
 					 		<td>${negocicao.valor}</td>
 					 		<td>${negocicao.volume}</td>
 					 	</tr>
 					 `
-						)
-						.join("")}
+           )
+           .join("")}
 				<tfoot>
+          <tr>
+           <td colspan="3"></td> 
+           <td>${model.volumeTotal}</td> 
+          </tr>
 				</tfoot>
 			</table>
 		`;
-	}
+  }
 }
